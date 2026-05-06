@@ -1,0 +1,28 @@
+name: Sync to GitLab
+
+on:
+  push:                # Startet, wenn du den Fork aktualisierst
+  schedule:
+    - cron: '0 * * * *' # Prüft jede Stunde nach Updates vom Original-Projekt
+  workflow_dispatch:   # Ermöglicht manuelles Starten per Klick
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Sync with Original
+        run: |
+          git remote add upstream https://github.com/beefproject/beef.git
+          git fetch upstream
+          git checkout main
+          git merge upstream/main # Holt die Änderungen vom Original in deinen Fork
+
+      - name: Push to GitLab
+        run: |
+          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/arnold.grossmann/beef.git
+          git push gitlab main --force
