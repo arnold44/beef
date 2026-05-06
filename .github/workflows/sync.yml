@@ -18,11 +18,11 @@ jobs:
       - name: Sync with Original
         run: |
           git remote add upstream https://github.com/beefproject/beef.git
-          git fetch upstream
-          git checkout main
-          git merge upstream/main # Holt die Änderungen vom Original in deinen Fork
+          git fetch upstream master
+          git checkout master
+          git merge upstream/master # Holt die Änderungen vom Original in deinen Fork
 
       - name: Push to GitLab
         run: |
           git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/arnold.grossmann/beef.git
-          git push gitlab main --force
+          git push gitlab master --force
