@@ -26,5 +26,5 @@ jobs:
 
       - name: Push to GitLab
         run: |
-          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN2 }}@gitlab.com/arnold.grossmann/beef.git
+          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN3 }}@gitlab.com/arnold.grossmann/beef.git
           git push gitlab master --force
