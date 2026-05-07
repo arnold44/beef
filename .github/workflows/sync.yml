@@ -26,5 +26,7 @@ jobs:
 
       - name: Push to GitLab
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/arnold.grossmann/beef.git
           git push gitlab master --force
