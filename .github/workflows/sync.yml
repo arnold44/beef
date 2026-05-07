@@ -17,6 +17,8 @@ jobs:
 
       - name: Sync with Original
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git remote add upstream https://github.com/beefproject/beef.git
           git fetch upstream master
           git checkout master
