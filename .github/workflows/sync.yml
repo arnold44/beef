@@ -24,7 +24,7 @@ jobs:
           git checkout master
           git merge upstream/master # Holt die Änderungen vom Original in deinen Fork
 
-      - name: Push to GitLab
-        run: |
-          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN5 }}@gitlab.com/arnold.grossmann/beef.git
-          git push gitlab master --force
+#      - name: Push to GitLab
+#        run: |
+#          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN5 }}@gitlab.com/arnold.grossmann/beef.git
+#          git push gitlab master --force
